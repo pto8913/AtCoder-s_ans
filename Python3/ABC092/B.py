@@ -6,7 +6,7 @@ A = [int(input()) for _ in range(N)]
 ans = X
 for a in A:
   day = 1
-  while a <= D:
+  while day <= D:
     day += a
     ans += 1
 print(ans)
