@@ -1,35 +1,34 @@
 def main():
+  n, k = map(int,input().split())
+  s = input()
+
   from itertools import groupby
 
-  N, K = map(int,input().split())
-  S = input()
-
+  tmp = []
   num = []
-  cot = []
-  for k, n in groupby(S):
-    num.append(k)
-    cot.append(len(list(n)))
+  for ke, v in groupby(s):
+    num.append(ke)
+    tmp.append(len(list(v)))
+  
+  num += [0]
+  tmp += [0]
 
-  if num[-1] == "0":
-    cot += [0]
-    num += [0]
-
-  X = [0]*(len(cot)+1)
-  for i in range(len(cot)):
-    X[i+1] = X[i]+cot[i]
+  nt = len(tmp)
+  wa = [0] * (nt+1)
+  for i in range(nt):
+    wa[i+1] = wa[i] + tmp[i]
 
   ans = 0
-  for i in range(len(X)):
-    x = K*2
+  for i in range(len(wa)):
+    x = k*2
     if num[i] == "1":
       x += 1
     try:
-      ans = max(ans, X[i+x]-X[i])
+      ans = max(ans, wa[i+x] - wa[i])
     except:
       break
-  if ans == 0:
-    ans = len(S)
+  if not ans:
+    ans = len(s)
   print(ans)
 
-if __name__ == '__main__':
-  main()
+main()
