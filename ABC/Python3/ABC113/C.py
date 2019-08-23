@@ -13,3 +13,29 @@ for i in range(M):
   sort_PY[i][2] = city[p]
 for p, y, z in PY:
   print(str(p).zfill(6)+str(z).zfill(6))
+
+# import sys
+
+# stdin = sys.stdin
+
+# sn = lambda : stdin.readline().rstrip()
+# an = lambda : map(int, stdin.readline().split())
+# ni = lambda : int(sn())
+
+# n, m = an()
+# py = []
+# for _ in range(m):
+#   py.append(list(an()) + [0])
+
+# sortPy = sorted(py, key = lambda x : (x[0], x[1]))
+
+# d = {}
+# for i, (p, y, n) in enumerate(sortPy):
+#   if p in d:
+#     d[p] += 1
+#   else:
+#     d[p] = 1
+#   sortPy[i][2] = d[p]
+
+# for p, y, n in py:
+#   print(str(p).zfill(6) + str(n).zfill(6))
