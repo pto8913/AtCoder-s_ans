@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.autoSave": "afterDelay",
+		"files.eol": "\n",
+		"terminal.integrated.shell.windows": "C:\\Windows\\System32\\wsl.exe",
+		"files.defaultLanguage": "cpp",
+    "editor.minimap.enabled": false,
+    "editor.tabSize": 2,
+    "editor.parameterHints.enabled": false,
+    "editor.matchBrackets": false,
+    "terminal.integrated.rendererType": "dom",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+		"window.zoomLevel": -1,
+		"git.ignoreLimitWarning": true,
+		"files.associations": {
+			"queue": "cpp",
+			"vector": "cpp",
+			"deque": "cpp",
+			"xstring": "cpp",
+			"ostream": "cpp"
+		},
+	}
+}

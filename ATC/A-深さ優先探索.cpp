@@ -3,45 +3,43 @@
 using namespace std;
 
 #define rep(i, a, n) for(int i = a; i < (n); ++i)
+#define ll long long
 
-char c[501][501];
-bool reach[501][501] = { false };
 int h, w;
+char maze[505][505];
+bool reach[505][505] = { false };
 
 bool dfs(int x, int y) {
-  if (x < 0 || y < 0 || x >= w || y >= h || c[y][x] == '#') {
+  if (x < 0 || y < 0 || x >= w || y >= h || maze[y][x] == '#') {
     return false;
   }
   if (reach[y][x]) {
     return false;
   }
   reach[y][x] = true;
-
-  if (c[y][x] == 'g') {
+  if (maze[y][x] == 'g') {
     return true;
   }
-
-  return dfs(x+1, y) || dfs(x, y+1) || dfs(x-1, y) || dfs(x, y-1);
+  return dfs(x+1, y) || dfs(x-1, y) || dfs(x, y+1) || dfs(x, y-1);
 }
 
 int main(){
-  cin >> h >> w;
+  scanf("%d%d", &h, &w);
 
-  char tile;
-  int start_x = 0, start_y = 0;
+  int sx, sy;
   rep(y, 0, h) {
     rep(x, 0, w) {
-      cin >> tile;
-      c[y][x] = tile;
-      if (tile == 's') {
-        start_x = x;
-        start_y = y;
+      scanf("%c", &maze[y][x]);
+      if (maze[y][x] == 's') {
+        sx = x;
+        sy = y;
       }
     }
   }
-  if (dfs(start_x, start_y)) {
-    cout << "Yes" << endl;
+
+  if (dfs(sx, sy)) {
+    printf("Yes");
   } else {
-    cout << "No" << endl;
+    printf("No");
   }
 }
