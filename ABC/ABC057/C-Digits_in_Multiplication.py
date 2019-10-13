@@ -3,18 +3,11 @@ import sys
 stdin = sys.stdin
 
 ns = lambda : stdin.readline().rstrip()
-na = lambda : map(int, stdin.readline().split())
 ni = lambda : int(ns())
+na = lambda : list(map(int, stdin.readline().split()))
+
 def main():
   n = ni()
-  if n == 1:
-    print(1)
-    return
-  nagasa = lambda x: len(str(x))
-  def f(a, b):
-    x = nagasa(a)
-    y = nagasa(b)
-    return x if x > y else y
 
   def divi(n):
     res = []
@@ -24,11 +17,26 @@ def main():
         if i != n // i:
           res.append(n // i)
     return res
-  x = divi(n)
-  ans = 1e9
-  for a in x:
-    b = n // a
-    ans = min(ans, f(a, b))
-  print(ans)
 
+  def digitlen(n):
+    return len(str(n))
+  
+  def f(a, b):
+    x = digitlen(a)
+    y = digitlen(b)
+    if x >= y:
+      return x
+    else:
+      return y
+
+  if n == 1:
+    print(1)
+    return 
+
+  ans = int(1e9+7)
+  for e in divi(n):
+    b = n // e
+    ans = min(ans, f(e, b))
+  print(ans)
+  
 main()

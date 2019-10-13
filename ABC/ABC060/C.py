@@ -1,9 +1,18 @@
-# URL: https://atcoder.jp/contests/abc060/tasks/arc073_a
+import sys
 
-N, T = map(int,input().split())
-t = list(map(int,input().split()))
+stdin = sys.stdin
 
-cnt = T
-for i in range(N-1):
-  cnt += min(T, t[i+1]-t[i])
-print(cnt)
+ns = lambda : stdin.readline().rstrip()
+ni = lambda : int(ns())
+na = lambda : list(map(int, stdin.readline().split()))
+
+def main():
+  n, T = na()
+  t = na()
+
+  cnt = T
+  for i in range(n - 1):
+    cnt += min(T, t[i + 1] - t[i])
+  print(cnt)
+
+main()

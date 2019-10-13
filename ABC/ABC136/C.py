@@ -1,22 +1,25 @@
+import sys
+
+stdin = sys.stdin
+
+ns = lambda : stdin.readline().rstrip()
+ni = lambda : int(ns())
+na = lambda : list(map(int, stdin.readline().split()))
+
 def main():
-  N = int(input())
-  H = list(map(int,input().split()))
+  n = ni()
+  a = na()
 
-  ma = H[-1]
-  ans = "Yes"
-  for i, h in enumerate(H[::-1]):
-    if i == 0:
+  for i in range(n - 1, 1, -1):
+    if a[i] > a[i - 1]:
       continue
-    if ma > h:
-      ma = h
-      continue
-    if ma < h:
-      if ma + 1 == h:
+    if a[i] < a[i - 1]:
+      if a[i] == a[i - 1] - 1:
+        a[i - 1] -= 1
         continue
-      ans = "No"
-    if ma == h:
+    if a[i] == a[i - 1]:
       continue
-  print(ans)
-
-if __name__ == "__main__":
-  main()
+    print("No")
+    return
+  print("Yes")
+main()

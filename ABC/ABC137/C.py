@@ -1,26 +1,25 @@
+import sys
+
+stdin = sys.stdin
+
+ns = lambda : stdin.readline().rstrip()
+ni = lambda : int(ns())
+na = lambda : list(map(int, stdin.readline().split()))
+
 def main():
-  N = int(input())
-  S = [input() for _ in range(N)]
+  n = ni()
 
   d = {}
-  for i, s in enumerate(S):
-    x = "".join(sorted(s))
-    if x in d:
-      d[x] += 1
+  for _ in range(n):
+    s = "".join(sorted(ns()))
+    if s in d:
+      d[s] += 1
     else:
-      d[x] = 1
-  
-  cnt = 0
-  for v in d.values():
-    if v == 1:
-      continue
-    if v == 2:
-      cnt += 1
-    elif v == 3:
-      cnt += v
-    else:
-      cnt += sum(list(range(1,v)))
+      d[s] = 1
 
-  print(cnt)
-if __name__ == "__main__":
-  main()
+  ans = 0
+  for k, v in d.items():
+    ans += (v * (v - 1)) // 2
+  print(ans)
+
+main()

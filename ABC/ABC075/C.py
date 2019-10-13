@@ -1,22 +1,29 @@
-# URL: https://atcoder.jp/contests/abc075/tasks/abc075_c
+import sys
 
-N, M = map(int,input().split())
+stdin = sys.stdin
 
-v = list(range(1,N+1))
-edges = [[] for _ in range(N+1)]
-for _ in range(M):
-  a, b = map(int,input().split())
-  edges[a] += [b]
-  edges[b] += [a]
+ns = lambda : stdin.readline().rstrip()
+ni = lambda : int(ns())
+na = lambda : list(map(int, stdin.readline().split()))
 
-def dfs(v, e):
-  for x in v:
-    if(len(e[x]) == 1):
-      t = e[x][0]
-      e[x] = []
-      e[t].remove(x)
-      v.remove(x)
-      return dfs(v, e)+1
-  return 0
+def main():
+  n = ni()
+  s = [ni() for _ in range(n)]
+  s.sort()
 
-print(dfs(v, edges))
+  ans = sum(s)
+  if ans % 10 == 0:
+    change = False
+    for e in s:
+      if e % 10 != 0:
+        ans -= e
+        change = True
+        break
+    if change:
+      print(ans)
+    else:
+      print(0)
+  else:
+    print(ans)
+
+main()

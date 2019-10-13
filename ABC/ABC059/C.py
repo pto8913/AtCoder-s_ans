@@ -1,19 +1,14 @@
-# URL: https://atcoder.jp/contests/abc059/tasks/arc072_a
+import sys
 
-N = int(input())
-A = list(map(int,input().split()))
+stdin = sys.stdin
 
-def f(x):
-  cnt = 0
-  tmp = 0
-  for a in A:
-    tmp += a
-    #print(tmp, x)
-    if(tmp*x >= 0):
-      cnt += abs(tmp)+1
-      tmp = -x
-    x *= -1
-    #print(tmp, x)
-  return cnt
+ns = lambda : stdin.readline().rstrip()
+ni = lambda : int(ns())
+na = lambda : list(map(int, stdin.readline().split()))
 
-print(min(f(1), f(-1)))  
+n = ni()
+a = na()
+
+tmp = 0
+for e in a:
+  if tmp + e
