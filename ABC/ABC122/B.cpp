@@ -3,17 +3,31 @@
 
 using namespace std;
 
+#define rep(i, a, n) for(int i = a; i < (n); ++i)
+
 int main(){
-  string S;
-  cin >> S;
-  int i = 0, ans = 0, l = 0;
-  while (S[i] != '\0'){
-    if (S[i] != 'A' && S[i] != 'C' && S[i] != 'G' && S[i] != 'T') l = 0;
-    else {
-      ++l;
-      ans = max(l, ans);
+  string s;
+  cin >> s;
+
+  int Count = 0;
+  int Ans = 0;
+  string Prev = "";
+  rep(i, 0, s.length())
+  {
+    if (i == 0) Prev = s[i];
+    if (s[i] == 'A' || s[i] == 'C' || s[i] == 'G' || s[i] == 'T')
+    {
+      if (Prev == 'A' || Prev == 'C' || Prev == 'G' || Prev == 'T') ++Count;
+      else 
+      {
+        if (Ans < Count) 
+        {
+          Ans = Count;
+          Count = 0;
+        }
+      }
     }
-    ++i;
+    Prev = s[i];
   }
-  cout << ans << endl;
+  cout << Ans << endl;
 }
