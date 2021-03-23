@@ -1,16 +1,25 @@
-# URL: https://atcoder.jp/contests/arc061/tasks/arc061_a
+import sys
 
-S = input()
+stdin = sys.stdin
 
-ans = 0
-memo = []
-for i in range(1 << len(S)-1):
-  tmp = S[0]
-  for j in range(len(S)-1):
-    if ((i >> j) & 1) == 1:
-      tmp += "+"
-    tmp += S[j+1]
-  if tmp not in memo:
+ns = lambda : stdin.readline().rstrip()
+ni = lambda : int(ns())
+na = lambda : list(map(int, stdin.readline().split()))
+sys.setrecursionlimit(10 ** 7)
+
+def main():
+  S = ns()
+  n = len(S) - 1
+
+  ans = 0
+  for i in range(1 << n):
+    tmp = S[0]
+    for j in range(n):
+      if (i >> j) & 1 == 1:
+        tmp += "+"
+      tmp += S[j+1]
     ans += eval(tmp)
-    memo.append(tmp)
-print(ans)
+  print(ans)
+
+if __name__ == '__main__':
+  main()
